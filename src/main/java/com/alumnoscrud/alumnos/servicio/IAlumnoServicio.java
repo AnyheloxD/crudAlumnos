@@ -2,6 +2,9 @@ package com.alumnoscrud.alumnos.servicio;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import com.alumnoscrud.alumnos.modelo.Alumno;
 
 public interface IAlumnoServicio {
@@ -15,4 +18,6 @@ public interface IAlumnoServicio {
     void eliminarPorId(Long id);
     
     void actualizar(Alumno alumno);
+
+     Page<Alumno> listarAlumnosPaginados(PageRequest pageRequest);
 }

@@ -9,7 +9,6 @@
     <head th:replace="~{index :: head}">
     </head>
 
-
     <main>
         <div class="container my-5">
             <a th:href="@{/alumno/crear}" class="btn btn-primary">
@@ -27,7 +26,7 @@
                 </thead>
                 <tbody>
                    
-                    <tr th:each="alumno, index : ${alumno}">
+                    <tr th:each="alumno : ${alumnos}">
                       
                         <td>
                             <div class="">
@@ -55,6 +54,22 @@
                     </tr>
                 </tbody>
             </table>
+              
+              <div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${currentPage == 0}? 'disabled'">
+                      <a class="page-link" th:href="@{/alumno/lista(page=${currentPage - 1},size=${size})}">Anterior</a>
+                    </li>
+                    <li class="page-item" th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}">
+                        <a class="page-link" th:href="@{/alumno/lista(page=${pageNumber},size=${size})}"
+                           th:text="${pageNumber + 1}" th:classappend="${pageNumber == currentPage}? 'active'"></a>
+                      </li>
+                    <li class="page-item" th:classappend="${currentPage + 1 >= totalPages}? 'disabled'">
+                      <a class="page-link" th:href="@{/alumno/lista(page=${currentPage + 1},size=${size})}">Siguiente</a>
+                    </li>
+                  
+                  </ul>
+              </div>
         </div>
     </main>
 

@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import org.springframework.stereotype.Service;
 
 import com.alumnoscrud.alumnos.dao.IAlumnoDao;
@@ -44,6 +47,12 @@ public class AlumnoService implements IAlumnoServicio {
     @Override
     public void actualizar(Alumno alumno) {
         alumnoDao.save(alumno);
+    }
+
+    
+    @Override
+    public Page<Alumno> listarAlumnosPaginados(PageRequest pageRequest) {
+        return alumnoDao.findAll(pageRequest);
     }
 
 }
