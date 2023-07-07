@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos</title>
+</head>
+<body>
+    <head th:replace="~{index :: head}">
+    </head>
+
+
+    <main>
+        <div class="container my-5">
+            <a th:href="@{/alumno/crear}" class="btn btn-primary">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <table class="table">
+                <thead>
+                    <tr>
+                    
+                        <th scope="col">Alumno</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    <tr th:each="alumno, index : ${alumno}">
+                      
+                        <td>
+                            <div class="">
+                                <div class="d-flex align-items-center gap-2">
+                                    <h6 th:text="${alumno.nombre}"></h6>
+                                    <h6 th:text="${alumno.apellido}"></h6>
+                                </div>
+                                <small th:text="${alumno.dni}"></small>
+                            </div>
+                        </td>
+                        <td>
+                            <h6 th:text="${alumno.correo}"></h6>
+                        </td>
+                        <td>
+                            <h6 th:text="${alumno.direccion}"></h6>
+                        </td>
+                        <td>
+                            <a th:href="@{/alumno/editar/{id}(id=${alumno.id})}" class="btn btn-success">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <a th:href="@{/alumno/eliminar/{id}(id=${alumno.id})}" class="btn btn-primary">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer  th:replace="~{index :: footer}">
+    </footer>
+</body>
+</html>

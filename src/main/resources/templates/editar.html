@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos</title>
+</head>
+<body>
+    <head th:replace="~{index :: head}">
+    </head>
+
+
+    <main>
+        <div class="container">
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-lg-6">
+                    <div class="card p-5">
+                        <h4>Editar alumno</h4>
+                        <form th:object="${alumno}" th:action="@{/alumno/actualizar}" method="post">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" th:field="*{apellido}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="dni" class="form-label">DNI</label>
+                                <input type="text" class="form-control" id="dni" th:field="*{dni}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="correo" th:field="*{correo}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="direccion" th:field="*{direccion}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+       
+    </main>
+
+    <footer  th:replace="~{index :: footer}">
+    </footer>
+</body>
+</html>
